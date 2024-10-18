@@ -1,13 +1,13 @@
 {
   "name": "historicaltxalchemy",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "backrunAPI.js",
   "scripts": {
     "dev": "npm run start",
     "start": "node backrunAPI.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Semia Guesmi",
   "license": "ISC",
   "description": "",
   "dependencies": {
