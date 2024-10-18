@@ -12,10 +12,7 @@ function toHexString(uintValue) {
 
 app.get('/get-transfers', async (req, res) => {
   try {
-  
-    const { fromBlockUint } = req.body;
-
-    const fromBlockHex = toHexString(fromBlockUint);
+    const fromBlockHex = toHexString(req.query.fromBlockUint);
 
     const data1 = JSON.stringify({
       "jsonrpc": "2.0",
@@ -46,7 +43,7 @@ app.get('/get-transfers', async (req, res) => {
     const transfersLength = transfers1.length;
 
     res.json({
-      jobRunID: req.body.id,
+      jobRunID: req.query.id,
       data: transfersLength,
       status: 'success'
     });
