@@ -13,8 +13,8 @@ function toHexString(uintValue) {
 app.get('/get-transfers', async (req, res) => {
   try {
     const fromBlockHex = toHexString(req.query.fromBlockUint);
-    const fromAddress = toHexString(req.query.fromAddress);
-    const toAddress = toHexString(req.query.toAddress);
+    const fromAddress = req.query.fromAddress;
+    const toAddress = req.query.toAddress;
 
     const data1 = JSON.stringify({
       "jsonrpc": "2.0",
