@@ -25,7 +25,7 @@ app.get('/get-transfers', async (req, res) => {
           "fromBlock": fromBlockHex,  
           "toBlock": "latest",
           
-          fromAddress: fromAddress,
+          "fromAddress": fromAddress,
           "toAddress": toAddress,
         
           "category": ["external","internal", "erc20"],
