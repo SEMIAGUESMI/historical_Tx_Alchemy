@@ -13,6 +13,8 @@ function toHexString(uintValue) {
 app.get('/get-transfers', async (req, res) => {
   try {
     const fromBlockHex = toHexString(req.query.fromBlockUint);
+    const fromAddress = toHexString(req.query.fromAddress);
+    const toAddress = toHexString(req.query.toAddress);
 
     const data1 = JSON.stringify({
       "jsonrpc": "2.0",
@@ -22,8 +24,10 @@ app.get('/get-transfers', async (req, res) => {
         {
           "fromBlock": fromBlockHex,  
           "toBlock": "latest",
-          "fromAddress": "0xCC76244a2f9591D7868Cd1a71994d05A12e1DfA5",
-          "toAddress": "0x2fb7F1d67576a542895C0CCb1C2EA0ae6368E784",
+          
+          fromAddress: fromAddress,
+          "toAddress": toAddress,
+        
           "category": ["external","internal", "erc20"],
           "excludeZeroValue": true
         }
@@ -37,7 +41,6 @@ app.get('/get-transfers', async (req, res) => {
     };
 
     const baseURL = process.env.ALCHEMY_API_KEY;
-
     const response = await axios(baseURL, requestOptions); 
     const transfers1 = response.data.result.transfers;
     const transfersLength = transfers1.length;
@@ -58,14 +61,14 @@ app.get('/get-transfers', async (req, res) => {
   }
 });
 
-
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
 
-
+//"fromAddress": "0xCC76244a2f9591D7868Cd1a71994d05A12e1DfA5",
+// "toAddress": "0x2fb7F1d67576a542895C0CCb1C2EA0ae6368E784",
 
 
 
